@@ -1,4 +1,4 @@
-public class findFlight {
+public class FindFlight {
 
     public void findAllAvailableFlightFromAirport(FlyingList flyingList, String airport) {
         flyingList.getListOfAvailableFlights().entrySet().stream()
