@@ -7,6 +7,6 @@ public class Information implements InformationProcess {
         provider.getProductsList().entrySet().stream()
                 .forEach(System.out::println);
         System.out.println("from " + provider.getProviderName() + " Completed");
-    return true;
+        return true;
     }
 }
