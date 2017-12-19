@@ -1,13 +1,16 @@
 public class OrderExecutor {
-    private Provider provider;
     private Information information;
 
-    public OrderExecutor(Provider provider, Information information) {
-        this.provider = provider;
-        this.information = information;
+    public OrderExecutor() {
+        this.information = new Information();
     }
 
-    public void orderProcessor(Deliverer deliverer) {
+    public void orderProcessor(DeliverRequest delivererRequest, Provider provider) {
+        System.out.println("Name of provider: " + delivererRequest.getDeliverer().getName());
+        System.out.println("List of ordered products: ");
+        delivererRequest.getListOfOrderedProducts();
+        provider.process(delivererRequest);
+        information.information(delivererRequest);
     }
 }
 

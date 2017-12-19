@@ -1,3 +1,3 @@
 public interface InformationProcess {
-    boolean information(Provider provider);
+    boolean information(DeliverRequest deliverRequest);
 }

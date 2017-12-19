@@ -1,5 +1,4 @@
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class ExtraFoodShop extends Deliverer implements Provider {
     public ExtraFoodShop(String name, Map<String, Integer> productsList, int minDaysaysToRealizeOrder) {
@@ -7,16 +6,14 @@ public class ExtraFoodShop extends Deliverer implements Provider {
     }
 
     @Override
-    public Map<String, Integer> process(DeliverRequest deliverRequest) {
-        boolean isPossibleToDeliverOrder = deliverRequest.getTimeToDeliverOrder() < getDaysToRealizeOrder();
+    public void process(DeliverRequest deliverRequest) {
+        boolean isPossibleToDeliverOrder = deliverRequest.getTimeToDeliverOrder() > getDaysToRealizeOrder();
 
         if (isPossibleToDeliverOrder) {
-            Map<String, Integer> order = deliverRequest.getListOfOrderedProducts().entrySet().stream()
-                    .filter(e -> getProductsList().entrySet().contains(e.getKey()))
-                    .collect(Collectors.toMap(p -> p.getKey(), p -> p.getValue()));
-            return order;
+            System.out.println("Accepting order...");
+            System.out.println("Checking available products in data base");
+            System.out.println("Completing the order...");
+            System.out.println("Transfer order to transport");
         }
-        return null;
     }
-
 }

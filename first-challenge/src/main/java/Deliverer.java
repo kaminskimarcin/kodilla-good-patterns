@@ -5,10 +5,10 @@ public class Deliverer {
     private Map<String, Integer> productsList;
     private int minDaysaysToRealizeOrder;
 
-    public Deliverer(String name, Map<String, Integer> productsList, int daysToRealizeOrder) {
+    public Deliverer(String name, Map<String, Integer> productsList, int minDaysaysToRealizeOrder) {
         this.name = name;
         this.productsList = productsList;
-        minDaysaysToRealizeOrder = daysToRealizeOrder;
+        this.minDaysaysToRealizeOrder = minDaysaysToRealizeOrder;
     }
 
     public String getName() {

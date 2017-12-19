@@ -1,12 +1,12 @@
 public class Information implements InformationProcess {
 
     @Override
-    public boolean information(Provider provider) {
+    public boolean information(DeliverRequest deliverRequest) {
         System.out.println("Realization of order on products:");
 
-        provider.getProductsList().entrySet().stream()
+        deliverRequest.getListOfOrderedProducts().entrySet().stream()
                 .forEach(System.out::println);
-        System.out.println("from " + provider.getProviderName() + " Completed");
+        System.out.println("from " + deliverRequest.getDeliverer().getName() + " Completed");
         return true;
     }
 }
