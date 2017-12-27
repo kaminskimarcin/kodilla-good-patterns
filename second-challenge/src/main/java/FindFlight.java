@@ -10,11 +10,6 @@ public class FindFlight {
 
     public List<Airport> findAllAvailableFlightToAirport(FlyingList flyingList, Airport airport) {
         List<Airport> fromToList = new ArrayList<>();
-        for (Map.Entry<Airport, List<Airport>> airportList : flyingList.getListOfAvailableFlights().entrySet()) {
-            if (airportList.getValue().contains(airport)) {
-                fromToList.add(airportList.getKey());
-            }
-        }
 
         flyingList.getListOfAvailableFlights().entrySet().stream()
                 .forEach(k -> {
@@ -27,6 +22,19 @@ public class FindFlight {
     }
 
     public List<Airport> findAllAvaiableConnectsFromTo(FlyingList flyingList, Airport departure, Airport arrival) {
-        return null;
+        List<Airport> destinationlist = new ArrayList<>();
+
+        if (flyingList.getListOfAvailableFlights().get(departure).contains(arrival)) {
+            System.out.println("Simple way! " + departure + " -> " + arrival);
+        } else {
+            flyingList.getListOfAvailableFlights().entrySet().stream()
+                    .forEach(k -> {
+                        if (k.getValue().contains(arrival)) {
+                            destinationlist.add(k.getKey());
+                            System.out.println("Your connect: " + departure + " -> " + k.getKey() + " -> " + arrival);
+                        }
+                    });
+        }
+        return destinationlist;
     }
 }

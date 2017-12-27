@@ -81,4 +81,53 @@ public class FlyingListTestSuite {
 
         Assert.assertEquals(expectedList, list);
     }
+
+    @Test
+    public void shouldReturnDestinationList() {
+        //Given
+        Airport wro = new Airport("Wrocław");
+        Airport kat = new Airport("Katowice");
+        Airport kra = new Airport("Kraków");
+        Airport war = new Airport("Warszawa");
+
+        List<Airport> flightsFromWroTo = new ArrayList<>();
+        List<Airport> flightsFromWarTo = new ArrayList<>();
+        List<Airport> flightsFromKraTo = new ArrayList<>();
+        List<Airport> flightsFromKatTo = new ArrayList<>();
+
+        flightsFromWarTo.add(kat);
+        flightsFromWarTo.add(kra);
+        flightsFromWarTo.add(wro);
+
+        flightsFromKraTo.add(wro);
+        flightsFromKraTo.add(war);
+        flightsFromKraTo.add(kat);
+
+        flightsFromWroTo.add(kat);
+        flightsFromWroTo.add(war);
+
+        flightsFromKatTo.add(war);
+        flightsFromKatTo.add(wro);
+        flightsFromKatTo.add(kra);
+
+        Map<Airport, List<Airport>> flightsTo = new HashMap<>();
+
+        flightsTo.put(wro, flightsFromWroTo);
+        flightsTo.put(war, flightsFromWarTo);
+        flightsTo.put(kra, flightsFromKraTo);
+        flightsTo.put(kat, flightsFromKatTo);
+
+        FindFlight findFlight = new FindFlight();
+
+        FlyingList flyingList = new FlyingList(flightsTo);
+
+        //When
+
+        List<Airport> destination = findFlight.findAllAvaiableConnectsFromTo(flyingList, wro, kra);
+
+        //Then
+
+        Assert.assertEquals(2, destination.size());
+
+    }
 }
