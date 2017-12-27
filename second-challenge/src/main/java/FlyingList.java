@@ -1,24 +1,16 @@
 
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 public class FlyingList {
-    private Map<String, String> listOfAvailableFlights;
+    private Map<Airport, List<Airport>> listOfAvailableFlights;
 
-    public FlyingList() {
+    public FlyingList(Map<Airport, List<Airport>> listOfAvailableFlights) {
         this.listOfAvailableFlights = listOfAvailableFlights;
     }
 
-    public void addFlight(String departureAirport, String arrivalAirport) {
-        listOfAvailableFlights.put(departureAirport, arrivalAirport);
-    }
-
-    public void displayAvaiableFlight() {
-        listOfAvailableFlights.entrySet().stream()
-                .forEach(System.out::println);
-    }
-
-    public Map<String, String> getListOfAvailableFlights() {
+    public Map<Airport, List<Airport>> getListOfAvailableFlights() {
         return listOfAvailableFlights;
     }
 
